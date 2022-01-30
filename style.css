@@ -43,8 +43,6 @@
 
 .content {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
     flex: 1;
 }
 
