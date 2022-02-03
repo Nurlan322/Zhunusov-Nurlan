@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    /*min-height: 100vh;*/
+    background: linear-gradient(50deg, #00853e, #D3D3D3);
+
+}
+
+.flex-item {
+    padding: 10px;
+    font: 800 60px "Roboto", sans-serif;
+    color: #fff;
+    text-align: center;
+    text-shadow: 5px 3px 0 rgba(0, 0, 0, 0.3);
+}
+.item-1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-2 {
+    display: flex;
+    flex: 1;
+}
+
+.inner-item-1 {
+    background-image: url("../img/photo.jpg");
+    background-size: cover;
+    width: 300px;
+    height: 550px;
+}
+
+.inner-item-2 {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.name {
+    padding: 10px;
+}
+
+.content {
+    display: flex;
+    flex: 1;
+}
+
+.logo {
+    background-image: url("../img/tor.png");
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+}
+
+.content {
+    font: 400 20px "Roboto", sans-serif;
+    text-shadow: none;
+    padding: 10px;
+}
+
+.flex-piсt{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 20px 0;
+}
+
+.pict-item{
+    display: flex;
+    flex-direction: column;
+}
+.picture-1{
+    background-image: url("../img/winter.jpg");
+    height: 200px;
+    width: 300px;
+    background-size: cover;
+}
+.picture-2{
+    background-image: url("../img/spring.jpg");
+    height: 200px;
+    width: 300px;
+    background-size: cover;
+}
+.picture-3{
+    background-image: url("../img/leto.jpg");
+    height: 200px;
+    width: 300px;
+    background-size: cover;
+}
+.picture-4{
+    background-image: url("../img/autmn.jpg");
+    height: 200px;
+    width: 300px;
+    background-size: cover;
+}
+.text{
+    text-align: center;
+    padding: 10px 0;
+    font: 600 30px "Roboto", sans-serif;
+    color: #fff;
+}
+a{
+    text-decoration: none;
+}
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 10px
+}
+.grid-item{
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+    justify-content: center;
+}
+.grid-pict-1{
+    background-image: url("../img/winter.jpg");
+    height: 200px;
+    width: 300px;
+    background-size: cover;
+}
+.grid-pict-2{
+    background-image: url("../img/spring.jpg");
+    height: 200px;
+    width: 300px;
+    background-size: cover;
+}
+.grid-pict-3{
+    background-image: url("../img/leto.jpg");
+    height: 200px;
+    width: 300px;
+    background-size: cover;
+}
+.grid-pict-4{
+    background-image: url("../img/autmn.jpg");
+    height: 200px;
+    width: 300px;
+    background-size: cover;
+}
+
+.top-left{
+}
+.top-right{
+}
+.bot-left{
+}
+.bot-right{
+}
