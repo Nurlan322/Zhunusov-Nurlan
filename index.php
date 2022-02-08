@@ -1,3 +1,12 @@
+<?
+    if(date('H') + 2 >= 20 || date('H') + 2 < 8){
+        $bg = 'linear-gradient(50deg, #00853e, #000000)';
+    }
+    else if (date('H') + 2 >= 8 && date('H') + 2 < 20)
+    {
+        $bg = "linear-gradient(50deg, #00853e, #D3D3D3)";
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +15,11 @@
     <title>Сайт про меня</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="shortcut icon" href="img/tor.png" type="image/png">
+    <style type="text/css">
+        body{
+            background: <? echo $bg; ?>;
+        }
+    </style>
 </head>
 <body>
 <div class="flex-container">
