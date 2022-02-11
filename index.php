@@ -1,10 +1,12 @@
 <?
     if(date('H') + 2 >= 20 || date('H') + 2 < 8){
         $bg = 'linear-gradient(50deg, #00853e, #000000)';
-    }
+        $hf = 'linear-gradient(50deg, #000000, #00853e)';
+   }
     else if (date('H') + 2 >= 8 && date('H') + 2 < 20)
     {
         $bg = "linear-gradient(50deg, #00853e, #D3D3D3)";
+        $hf = 'linear-gradient(50deg, #D3D3D3, #00853e)';
     }
 ?>
 <!DOCTYPE html>
@@ -19,16 +21,16 @@
         body{
             background: <? echo $bg; ?>;
         }
+        .item-1, .item-3{
+            background: <? echo $hf; ?>;
+        }
     </style>
 </head>
 <body>
 <div class="flex-container">
-    <header class="flex-item item-1">
-        <img src="img/tor.png" class="logo">
-        <a href="table/table.html" target="_blank">
-            <img src="img/tab.jpg" width="200px" height="100px" alt="Ops..." class="table">
-        </a>
-    </header>
+    <?
+        require_once "includes/header.php";
+    ?>
     <main class="flex-item item-2">
         <img src="img/photo.jpg" class="inner-item inner-item-1">
         <div class="inner-item inner-item-2">
@@ -58,6 +60,9 @@
             <div class="text">Осень</div>
         </div>
     </div>
+    <?
+        require_once "includes/footer.php";
+    ?>
 </div>
 </body>
 </html>
