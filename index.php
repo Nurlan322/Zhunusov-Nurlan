@@ -87,7 +87,7 @@ if (date('H') + 2 >= 20 || date('H') + 2 < 8) {
     </div>
     <div class="flex-piсt">
         <div class="pict-item">
-            <div class="text">Мой день рождения:</div>
+            <div class="text"><? $all_text[] = "Мой день рождения:"; echo $all_text[7]?></div>
             <div class="text"><? echo '22.04.2001'; ?></div>
         </div>
         <div class="pict-item">
@@ -104,22 +104,42 @@ if (date('H') + 2 >= 20 || date('H') + 2 < 8) {
     <?
     // Количество гласных
     $all_text[] = "Как со мной связаться";
-    $ar = ['а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я'];
-    $Ar = ['А', 'Е', 'Ё', 'И', 'О', 'У', 'Ы', 'Э', 'Ю', 'Я'];
-    for ($i = 0; $i < count($all_text); $i++) {
-        for ($j = 0; $j < strlen($all_text[$i]) / 2 + 1; $j++) {
-            if (in_array(mb_substr($all_text[$i], $j, 1), $ar)) {
-                $count++;
-            } elseif (in_array(mb_substr($all_text[$i], $j, 1), $Ar)) {
-                $count++;
-            } else
-                continue;
+    function vowel_letters(&$all_text)
+    {
+        $ar = ['а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я'];
+        $Ar = ['А', 'Е', 'Ё', 'И', 'О', 'У', 'Ы', 'Э', 'Ю', 'Я'];
+        for ($i = 0; $i < count($all_text); $i++) {
+            for ($j = 0; $j < strlen($all_text[$i]) / 2 + 1; $j++) {
+                if (in_array(mb_substr($all_text[$i], $j, 1), $ar)) {
+                    $count++;
+                } elseif (in_array(mb_substr($all_text[$i], $j, 1), $Ar)) {
+                    $count++;
+                } else
+                    continue;
+            }
         }
+        return $count;
     }
     // Количество слов
-    for ($i = 0; $i < count($all_text); $i++) {
-        $word_count += count(explode(' ', $all_text[$i]));
+    function words(&$all_text)
+    {
+        for ($i = 0; $i < count($all_text); $i++) {
+            $word_count += count(explode(' ', $all_text[$i]));
+        }
+        return $word_count;
     }
+    ?>
+    <div class="flex-piсt">
+        <div class="pict-item">
+            <div class="text"><? $all_text[] = "Количество гласных букв на странице: "; echo $all_text[9]?></div>
+            <div class="text"><? echo vowel_letters($all_text); ?></div>
+        </div>
+        <div class="pict-item">
+            <div class="text"><? $all_text[] = "Количество слов на странице: "; echo $all_text[10]?></div>
+            <div class="text"><? echo words($all_text); ?></div>
+        </div>
+    </div>
+    <?
     require_once "includes/footer.php";
     ?>
 </div>
