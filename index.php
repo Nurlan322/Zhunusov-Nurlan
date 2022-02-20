@@ -1,11 +1,28 @@
 <?
-if (date('H') + 2 >= 20 || date('H') + 2 < 8) {
-    $bg = 'linear-gradient(50deg, #00853e, #000000)';
-    $hf = 'linear-gradient(50deg, #000000, #00853e)';
-} else if (date('H') + 2 >= 8 && date('H') + 2 < 20) {
-    $bg = "linear-gradient(50deg, #00853e, #D3D3D3)";
-    $hf = 'linear-gradient(50deg, #D3D3D3, #00853e)';
+function backgr()
+{
+    if (date('H') + 2 >= 20 || date('H') + 2 < 8) {
+        return $bg = 'linear-gradient(50deg, #00853e, #000000)';
+    } else if (date('H') + 2 >= 8 && date('H') + 2 < 20) {
+        return $bg = "linear-gradient(50deg, #00853e, #D3D3D3)";
+    }
 }
+function backgr1()
+{
+    if (date('H') + 2 >= 20 || date('H') + 2 < 8) {
+        return $hf = 'linear-gradient(50deg, #000000, #00853e)';
+    } else if (date('H') + 2 >= 8 && date('H') + 2 < 20) {
+        return $hf = 'linear-gradient(50deg, #D3D3D3, #00853e)';
+    }
+}
+
+//if (date('H') + 2 >= 20 || date('H') + 2 < 8) {
+//    $bg = 'linear-gradient(50deg, #00853e, #000000)';
+//    $hf = 'linear-gradient(50deg, #000000, #00853e)';
+//} else if (date('H') + 2 >= 8 && date('H') + 2 < 20) {
+//    $bg = "linear-gradient(50deg, #00853e, #D3D3D3)";
+//    $hf = 'linear-gradient(50deg, #D3D3D3, #00853e)';
+//}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,11 +34,11 @@ if (date('H') + 2 >= 20 || date('H') + 2 < 8) {
     <link rel="shortcut icon" href="img/tor.png" type="image/png">
     <style type="text/css">
         body {
-            background: <? echo $bg; ?>;
+            background: <? echo backgr(); ?>;
         }
 
         .item-1, .item-3 {
-            background: <? echo $hf; ?>;
+            background: <? echo backgr1(); ?>;
         }
     </style>
 </head>
@@ -40,22 +57,28 @@ if (date('H') + 2 >= 20 || date('H') + 2 < 8) {
             <div class="name-content content">
                 <span class="main-text about-me">
                     <?
-                    $about_me = 'Мне 20 лет,<br> учусь на 2 курсе в МГТУ им.Г.И.Носова<br> по специальности прикладная информитика. В свободное время играю на гитаре, смотрю фильмы, сериалы. Играю в компьютерные игры.';
-                    $about_me_color = mb_substr($about_me, 0, 11);
-                    echo "<font color = red>$about_me_color</font>" . mb_substr($about_me, 11);
+                    function first_color(){
+                        $about_me = 'Мне 20 лет,<br> учусь на 2 курсе в МГТУ им.Г.И.Носова<br> по специальности прикладная информитика. В свободное время играю на гитаре, смотрю фильмы, сериалы. Играю в компьютерные игры.';
+                        $about_me_color = mb_substr($about_me, 0, 11);
+                        echo "<font color = red>$about_me_color</font>" . mb_substr($about_me, 11);
+                    }
+                    echo first_color();
                     $all_text[] = "Мне 20 лет, учусь на 2 курсе в МГТУ им. Г.И.Носова по специальности прикладная информитика. В свободное время играю на гитаре, смотрю фильмы, сериалы. Играю в компьютерные игры.";
                     ?>
                 </span>
                 <span class="main-text feedback">
                     <?
-                    $feedback = 'Преподователь готов ответить на каждый вопрос своих учеников.<br> Доходчиво и внятно объясняет изучаемый материал. Также хочу выделить приятную атмосферу на занятиях.';
-                    $array_feedback = explode(' ', $feedback);
-                    for ($i = 0; $i < count($array_feedback); $i++) {
-                        if ($i % 2 == 0) {
-                            echo "<font color = purple>$array_feedback[$i] </font>";
-                        } else
-                            echo "<font color = orange>$array_feedback[$i] </font>";
+                    function color_feed(){
+                        $feedback = 'Преподователь готов ответить на каждый вопрос своих учеников.<br> Доходчиво и внятно объясняет изучаемый материал. Также хочу выделить приятную атмосферу на занятиях.';
+                        $array_feedback = explode(' ', $feedback);
+                        for ($i = 0; $i < count($array_feedback); $i++) {
+                            if ($i % 2 == 0) {
+                                echo "<font color = purple>$array_feedback[$i] </font>";
+                            } else
+                                echo "<font color = orange>$array_feedback[$i] </font>";
+                        }
                     }
+                    echo color_feed();
                     $all_text[] = "Преподователь готов ответить на каждый вопрос своих учеников. Доходчиво и внятно объясняет изучаемый материал. Также хочу выделить приятную атмосферу на занятиях.";
                     ?>
                 </span>
@@ -96,9 +119,12 @@ if (date('H') + 2 >= 20 || date('H') + 2 < 8) {
         </div>
         <div class="pict-item">
             <?
-            $days = (strtotime(date("d.m.y")) - strtotime("22.04.2001")) / (60 * 60 * 24);
+            function foo_day(){
+                $days = (strtotime(date("d.m.y")) - strtotime("22.04.2001")) / (60 * 60 * 24);
+                echo floor($days);
+            }
             ?>
-            <div class="text">На данный момент прошло: <? echo floor($days); ?></div>
+            <div class="text">На данный момент прошло: <? echo foo_day(); ?></div>
         </div>
     </div>
     <?

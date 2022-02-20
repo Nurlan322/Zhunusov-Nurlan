@@ -13,12 +13,15 @@
     <header class="flex-item item-1">
         <img src="img/tor.png" class="logo">
         <div class="links">
+            <a href="authorization/index.php" target="_blank">
+                <span class="author">Авторизация</span>
+            </a>
             <a href="hw/hw1.php" target="_blank">
                 <img src="img/hw.png" alt="..." width="100px" height="100px" class="link-elem hw">
             </a>
-        <a href="table/table.html" target="_blank">
-            <img src="img/tab.jpg" width="200px" height="100px" alt="Ops..." class="table link-elem">
-        </a>
+            <a href="table/table.html" target="_blank">
+                <img src="img/tab.jpg" width="200px" height="100px" alt="Ops..." class="table link-elem">
+            </a>
         </div>
     </header>
 </body>

@@ -113,11 +113,21 @@ a{
 
 }
 .hw{
-    margin-right: 20px;
+    margin: 0 20px;
 }
 .link-elem{
     flex: 0 0 45%;
 }
+.author {
+    font-size: 20px;
+    font-weight: 400;
+    text-shadow: none;
+    transition: .3s;
+}
+.author:hover {
+    font-size: 30px;
+}
+
 
 @media screen and (max-width: 992px){
     .flex-item{
