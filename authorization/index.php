@@ -7,6 +7,7 @@
         $passwords[$i] = md5($passwords[$i]);
     }
     $data = $_POST;
+
     if(isset($data['enter']))
     {
         $errors = [];
