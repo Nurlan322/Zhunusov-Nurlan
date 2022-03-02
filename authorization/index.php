@@ -1,11 +1,32 @@
 <?php
-    $logins = ['gena', 'ivan'];
-    $passwords = ['passgena', 'passivan'];
+    $hostname = 'localhost';
+    $username = 'Nurlan';
+    $password = '123';
+    $dbname = 'factdb';
+    $db_con = mysqli_connect($hostname, $username, $password, $dbname);
 
-    for($i = 0;$i < count($passwords); $i++)
-    {
-        $passwords[$i] = md5($passwords[$i]);
+    mysqli_set_charset($db_con, "utf8");
+    $select = mysqli_query($db_con, "SELECT * FROM people");
+    $select_array = mysqli_fetch_all($select, MYSQLI_ASSOC);
+    foreach($select_array as $key) {
+        foreach($key as $value => $item)
+        {
+            switch ($value) {
+                case 'name':
+                    $names[] = $item;
+                    break;
+                case 'login':
+                    $logins[] = $item;
+                    break;
+                case 'password':
+                    $passwords[] = $item;
+                    break;    
+                default:
+                    break;
+            }
+        }
     }
+
     $data = $_POST;
 
     if(isset($data['enter']))
@@ -21,7 +42,7 @@
                 if(trim($data['login']) == $logins[$i] && md5($data['password']) == $passwords[$i])
                 {
                     $new_url = 'hello.php';
-                    setcookie('name', strtoupper($logins[$i]), time() + 600);
+                    setcookie('name', strtoupper($names[$i]), time() + 600);
                     header('Location: ' . $new_url);
                     exit();
                 }
@@ -58,6 +79,7 @@
         <div class="input_form">
             <input type="submit" name="enter" value="Войти">
         </div>
+        <a href="../registration/registration.php" target="_blank" class="input_form" style="color: #fff; text-decoration: none;">Регистрация</a>
     </form>
 </body>
 </html>
