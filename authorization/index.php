@@ -1,33 +1,14 @@
 <?php
-    $hostname = 'localhost';
-    $username = 'Nurlan';
-    $password = '123';
-    $dbname = 'factdb';
-    $db_con = mysqli_connect($hostname, $username, $password, $dbname);
-
-    mysqli_set_charset($db_con, "utf8");
-    $select = mysqli_query($db_con, "SELECT * FROM people");
-    $select_array = mysqli_fetch_all($select, MYSQLI_ASSOC);
-    foreach($select_array as $key) {
-        foreach($key as $value => $item)
-        {
-            switch ($value) {
-                case 'name':
-                    $names[] = $item;
-                    break;
-                case 'login':
-                    $logins[] = $item;
-                    break;
-                case 'password':
-                    $passwords[] = $item;
-                    break;    
-                default:
-                    break;
-            }
-        }
-    }
+    require_once "../includes/db_in.php";
+    require_once "Auto.php";
 
     $data = $_POST;
+    mysqli_set_charset($db_con, "utf8");
+    $select = mysqli_query($db_con, "SELECT * FROM people");
+    $arr_fill = new Auto(mysqli_fetch_all($select, MYSQLI_ASSOC));
+    $arr_fill->filling();
+
+
 
     if(isset($data['enter']))
     {
@@ -37,20 +18,7 @@
         if(trim($data['password']) == '')
             $errors[] = 'Введите пароль!';
         if(empty($errors)){
-            for($i = 0; $i < count($logins); $i++)
-            {
-                if(trim($data['login']) == $logins[$i] && md5($data['password']) == $passwords[$i])
-                {
-                    $new_url = 'hello.php';
-                    setcookie('name', strtoupper($names[$i]), time() + 600);
-                    header('Location: ' . $new_url);
-                    exit();
-                }
-                else
-                {
-                    continue;
-                }
-            }
+            $arr_fill->check($data);
         }
         else
             echo array_shift($errors);

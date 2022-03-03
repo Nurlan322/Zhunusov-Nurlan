@@ -1,25 +1,14 @@
 <?php
-    $hostname = 'localhost';
-    $username = 'Nurlan';
-    $password = '123';
-    $dbname = 'factdb';
-    $db_con = mysqli_connect($hostname, $username, $password, $dbname);
+    require_once "../includes/db_in.php";
+    require_once "Regi.php";
+
 
     $data = $_POST;
 
     if(isset($data['enter']))
     {
-        if($data['password'] == $data['rpassword'])
-        {
-            $name = $data['name'];
-            $login = trim($data['login']);
-            $rpassword = md5($data['rpassword']);
-            $query = "INSERT INTO `people`(`ID_person`, `name`, `login`, `password`) VALUES (NULL, '$name', '$login', '$rpassword')";
-            $insert = mysqli_query($db_con, $query);
-            echo "Вы зарегистрировались!";
-        }
-        else 
-            echo 'Пароли должны быть одинаковыми';
+        $check_regi = new Regi($db_con);
+        $check_regi->registration($data);
     }
 ?>
 <!doctype html>
